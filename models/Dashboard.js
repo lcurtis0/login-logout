@@ -4,7 +4,6 @@ const sequelize = require('../config/connection');
 
 class Dashboard extends Model {}
   
-  // all 
   Dashboard.init(
     {
       id: {
@@ -13,7 +12,7 @@ class Dashboard extends Model {}
         primaryKey: true,
         autoIncrement: true,
       },
-      name: {
+      user: {
         type: DataTypes.STRING,
         allowNull: false,
       },

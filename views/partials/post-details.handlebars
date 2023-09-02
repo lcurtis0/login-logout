@@ -1,10 +1,15 @@
 <section class="card">
   <a href="/painting/{{id}}">
-    <header>{{title}}</header>
+    <header>{{user}}</header>
 
     <div class="card-body">
-      <img src="/images/{{filename}}" alt="{{description}}">
-      <p>By: {{artist}}</p>
+
+      <div class="post-header">
+        {{posts.user}}
+        {{posts.date}}
+      </div>
+      <div>{{posts.description}}</div>
+
     </div>
   
 </section>

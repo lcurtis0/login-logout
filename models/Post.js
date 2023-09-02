@@ -2,7 +2,7 @@ const { Model, DataTypes } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-// This is meant for Post
+// This is meant for Post to be made 
 
 Post.init(
     {
@@ -20,6 +20,10 @@ Post.init(
         type: DataTypes.DATE,
         allowNull: false,
       },
+      description: {
+        type: DataTypes.STRING, //Need to add description limit
+        allowNull: false,
+      }
     },
     {
         sequelize,

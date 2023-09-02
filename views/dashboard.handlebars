@@ -1,9 +1,9 @@
 <section class="container">
-  <h3 class="gallery-name">{{gallery.name}}</h3>
+  <h3 class="dasboard-name">{{dasboard.name}}</h3>
   <section class="flex-row justify-center">
-    {{#each gallery.paintings as |painting|}}
+    {{#each dasboard.posts as |post|}}
     <section class="card">
-      <a href="/painting/{{id}}">
+      <a href="/post/{{id}}">
         <header>{{title}}</header>
 
         <div class="card-body">
@@ -15,3 +15,4 @@
     {{/each}}
   </section>
 </section>
+
