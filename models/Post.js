@@ -16,9 +16,14 @@ Post.init(
         type: DataTypes.STRING,
         allowNull: false,
       },
+      title: {
+        type: DataTypes.STRING, //Need to add title limit
+        allowNull: false,
+      },
       date: {
         type: DataTypes.DATE,
         allowNull: false,
+        
       },
       description: {
         type: DataTypes.STRING, //Need to add description limit

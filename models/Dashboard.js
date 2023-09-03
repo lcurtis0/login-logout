@@ -12,10 +12,6 @@ class Dashboard extends Model {}
         primaryKey: true,
         autoIncrement: true,
       },
-      user: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
       date: {
         type: DataTypes.DATE,
         allowNull: false,
