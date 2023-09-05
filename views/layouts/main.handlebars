@@ -12,13 +12,18 @@
 <body>
   <header>
     <h1>Welcome to the NSA</h1>
+    {{#if logged_in}}
+    <nav>
+      <button class="btn" id="logout"><a href="/views/logout.handlebars">logout</a></button>
+    </nav>
+    {{/if}}
   </header>
   <nav>
     <a href="/">Home</a>
     <a href="/">Dashboard</a>
   </nav>
 
-  <nav>
+  <nav class="login-nav">
     <a href="/">Login</a>
     <a href="/">Logout</a>
   </nav>
@@ -30,6 +35,10 @@
     <div class="dashboard">
       {{{body}}}
     </div>
+    
+  {{#if logged_in}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
   </main>
 </body>
 

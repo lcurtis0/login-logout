@@ -1,4 +1,16 @@
 
+
+{{#each users as |user| }}
+<div class="row align-center mb-5">
+  <div class="col-md-6">
+    <h2>{{user.name}}</h2>
+  </div>
+  <div class="col-md-6">
+    {{dashboard}}
+  </div>
+</div>
+{{/each}}
+
 <p>Ready to add your post?</p>
   <a href="/dashboard/{{id}}"> Click Here </a>
 

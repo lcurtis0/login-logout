@@ -1,10 +1,10 @@
 :root {
-  --primary: #3d5852;
-  --secondary: #86938f;
-  --tertiary: #7bd4c2;
-  --quatrinary: #4a4844;
-  --light: #bbbbbb;
-  --dark: #171c1a;
+  --primary: #2b5249;
+  --secondary: #677772;
+  --tertiary: #5cab9b;
+  --quatrinary: #0c4f40;
+  --light: #dcdcdc;
+  --dark: #262d2a;
   --error: rgb(146, 69, 49);
   --border-radius: 0.3rem;
 }
@@ -66,6 +66,10 @@ nav a:hover {
   background-color: var(--dark);
 }
 
+.login-nav {
+  float: left;
+}
+
 .gallery {
   flex: 4;
   background-color: #fff;
@@ -116,15 +120,15 @@ img {
 }
 
 .login-card {
-  margin: 0 0 20px 0;
+  margin: 20px;
   flex: 0 0 50%;
   max-width: 50%;
-  padding: 5px;
+  padding: 15px;
   border: 3px solid var(--dark);
   border-radius: var(--border-radius);
   border-style: double;
   border-width: thick;
-  background-color: #577a7c;
+  background-color: #789192;
   color: var(--light);
 }
 
@@ -155,7 +159,6 @@ img {
   padding-left: 100px;
 }
 
-/* LAYOUT */
 .container {
   display: flex;
   flex-flow: column wrap;
