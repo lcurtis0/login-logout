@@ -24,8 +24,9 @@
   </nav>
 
   <nav class="login-nav">
-    <a href="/">Login</a>
-    <a href="/">Logout</a>
+    <a href="/login">Login</a>
+    <a href="/logout">Logout</a>
+    <a href="/signup">Sign Up</a>
   </nav>
 
   <main>
@@ -35,10 +36,10 @@
     <div class="dashboard">
       {{{body}}}
     </div>
-    
-  {{#if logged_in}}
-  <script src="/js/logout.js"></script>
-  {{/if}}
+
+    {{#if logged_in}}
+    <script src="/js/logout.js"></script>
+    {{/if}}
   </main>
 </body>
 
