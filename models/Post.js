@@ -4,6 +4,8 @@ const sequelize = require('../config/connection');
 
 // This is meant for Post to be made 
 
+class Post extends Model {}
+
 Post.init(
     {
       id: {
@@ -23,7 +25,6 @@ Post.init(
       date: {
         type: DataTypes.DATE,
         allowNull: false,
-        
       },
       description: {
         type: DataTypes.STRING, //Need to add description limit
