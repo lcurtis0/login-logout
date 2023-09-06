@@ -3,14 +3,14 @@ const { User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', withAuth, async (req, res) => {
-      if (req.session.logged_in) {
-        const users = userData.map((project) => project.get({ plain: true }));
-        res.render('homepage', {
-          users,
-          logged_in: req.session.logged_in,
-        });
-      }
+  if (req.session.logged_in) {
+    const users = userData.map((project) => project.get({ plain: true }));
+    res.render('homepage', {
+      users,
+      logged_in: req.session.logged_in,
     });
+  }
+});
 
 router.get('/login', (req, res) => {
   if (req.session.logged_in) {
@@ -31,7 +31,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.redirect('/login');
     return;
   }
   res.render('signup');
