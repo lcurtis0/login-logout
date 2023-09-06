@@ -1,19 +1,15 @@
-
-
-{{#each users as |user| }}
 <div class="row align-center mb-5">
   <div class="col-md-6">
-    <h2>{{user.name}}</h2>
+
+    {{#if logged_in}}
+    <p>Ready to add your post?</p>
+    <button><a href="/dashboard/{{id}}"> Click Here </a></button>
+
+    {{else}}
+    <p>It seems you don't have an account. Want to sign up?</p>
+    <a href="/signup"> Click Here </a>
+    {{/if}}
+
   </div>
-  <div class="col-md-6">
-    {{dashboard}}
-  </div>
+
 </div>
-{{/each}}
-
-<p>Ready to add your post?</p>
-  <a href="/dashboard/{{id}}"> Click Here </a>
-
-{{#each dashboards as |dashboard|}}
-{{> dashboard-details}}
-{{/each}}

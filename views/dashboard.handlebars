@@ -2,14 +2,13 @@
   {{#if logged_in}}
   <h3 class="dasboard-name">{{dasboard.name}}</h3>
   <section class="flex-row justify-center">
-    {{#each dasboard.posts as |post|}}
+    {{#each post.id as |post|}}
     <section class="card">
       <a href="/post/{{id}}">
-        <header>{{title}}</header>
+        <header>{{title}} By: {{name}}</header>
 
         <div class="card-body">
-          <img src="/images/{{filename}}" alt="{{description}}">
-          <p>By: {{name}}</p>
+          <p>{{description}}</p>
         </div>
       </a>
     </section>
@@ -21,4 +20,3 @@
     <a href="/login">Got to login</a>
   </section>
 </section>
-
