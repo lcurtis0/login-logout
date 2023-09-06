@@ -5,11 +5,10 @@
     {{#each dasboard.posts as |post|}}
     <section class="card">
       <a href="/post/{{id}}">
-        <header>{{title}}</header>
+        <header>{{title}} By: {{name}}</header>
 
         <div class="card-body">
-          <img src="/images/{{filename}}" alt="{{description}}">
-          <p>By: {{name}}</p>
+          <p>{{description}}</p>
         </div>
       </a>
     </section>

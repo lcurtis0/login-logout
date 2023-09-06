@@ -1,15 +1,29 @@
 const router = require('express').Router();
-const { User } = require('../models');
+const { User, Dashboard, Post } = require('../models');
 const withAuth = require('../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
-  if (req.session.logged_in) {
-    const users = userData.map((project) => project.get({ plain: true }));
-    res.render('homepage', {
-      users,
-      logged_in: req.session.logged_in,
-    });
-  }
+router.get('/', async (req, res) => {
+    try {
+      const dashboardData = await Dashboard.findAll({
+        include: [
+          {
+            model: Dashboard,
+            attributes: ['id', 'date'],
+          },
+        ],
+      })
+
+      const users = dashboardData.map((project) => project.get({ plain: true }));
+      res.render('homepage', {
+        users,
+        logged_in: req.session.logged_in,
+      });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  
+   
 });
 
 router.get('/login', (req, res) => {
@@ -38,13 +52,34 @@ router.get('/signup', (req, res) => {
 })
 
 
-router.get('/dashboard', withAuth, (req, res) => {
+router.get('/dashboard', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/dashboard');
-    return;
-  } else {
+    try {
+      const dashboardData = await Dashboard.findAll({
+        include: [
+          {
+            model: Post,
+            attributes: [
+              'title',
+              'date',
+              'name',
+              'description',
+            ],
+          },
+        ],
+      });
+      const dashboard = dashboardData.get({ plain: true });
+      res.render('dashboard', { dashboard, loggedIn: req.session.loggedIn });
+      return;
+    } catch (err) {
+      console.log(err);
+      res.status(500).json(err);
+    }
+  }
+  else {
     console.log("Please login")
-    res.render('login');
+    res.redirect('/login');
   }
 })
 module.exports = router;
