@@ -7,8 +7,8 @@ router.get('/', async (req, res) => {
       const dashboardData = await Dashboard.findAll({
         include: [
           {
-            model: Dashboard,
-            attributes: ['id', 'date'],
+            model: Post,
+            attributes: ['name', 'title', 'date','description'],
           },
         ],
       })
