@@ -44,7 +44,6 @@ router.post('/logout', (req, res) => {
 });
 
 
-
 router.put('/signup', async (req, res) => {
   const signupData = await User.update({
     where: {
