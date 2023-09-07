@@ -26,6 +26,8 @@ const sess = {
   })
 };
 
+app.set({req,res,next})
+
 // sess = session 
 app.use(session(sess));
 
