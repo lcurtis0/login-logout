@@ -8,7 +8,12 @@ router.get('/', async (req, res) => {
         include: [
           {
             model: Post,
-            attributes: ['name', 'title', 'date','description'],
+            attributes: [
+              'name',
+              'title',
+              'date',
+              'description'
+                ],
           },
         ],
       })
@@ -45,7 +50,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/login');
+    res.redirect('/');
     return;
   }
   res.render('signup');
@@ -61,6 +66,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
           {
             model: Post,
             attributes: [
+              'id',
               'title',
               'date',
               'name',
