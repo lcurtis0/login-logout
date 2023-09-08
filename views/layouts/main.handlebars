@@ -12,11 +12,6 @@
 <body>
   <header>
     <h1>Welcome to the NSA</h1>
-    {{#if logged_in}}
-    <nav>
-      <button class="btn" id="logout"><a href="/views/logout.handlebars">logout</a></button>
-    </nav>
-    {{/if}}
   </header>
   <nav>
     <a href="/">Home</a>
@@ -24,8 +19,13 @@
   </nav>
 
   <nav class="login-nav">
+    {{#if logged_in}}
+    <nav>
+      <button class="btn" id="logout"><a href="/logout">Logout</a></button>
+    </nav>
+    {{else }}
     <a href="/login">Login</a>
-    <a href="/logout">Logout</a>
+    {{/if}}
     <a href="/signup">Sign Up</a>
   </nav>
 
@@ -33,7 +33,7 @@
     <aside>
       <h2>Here are the latest posts</h2>
     </aside>
-    
+
     <div class="dashboard">
       {{{body}}}
     </div>
