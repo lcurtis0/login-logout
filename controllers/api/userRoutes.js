@@ -46,7 +46,7 @@ router.post('/logout', (req, res) => {
 
 
 router.post('/signup', async (req, res) => {
-  const signupData = await User.create({
+  const signupData = await User.findOrCreate({
     email: req.body.email,
     password: req.body.password,
     name: req.body.name
