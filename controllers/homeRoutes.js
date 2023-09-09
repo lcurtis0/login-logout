@@ -61,6 +61,7 @@ router.get('/dashboard', withAuth, async (req, res) => {
   if (req.session.logged_in) {
     res.redirect('/dashboard');
     try {
+
       const dashboardData = await Dashboard.findAll({
         include: [
           {
@@ -75,7 +76,10 @@ router.get('/dashboard', withAuth, async (req, res) => {
           },
         ],
       });
-      const dashboard = dashboardData.get({ plain: true });
+
+      const dashboard = dashboardData.map(posts => posts.get({ plain: true }));
+
+      console.log(" HELLO THIS IS SHOWING HERE")
       res.render('dashboard', { dashboard, loggedIn: req.session.loggedIn });
       return;
     } catch (err) {
