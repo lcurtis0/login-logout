@@ -3,7 +3,7 @@
 const createPostFormHandler = async (event) => {
     event.preventDefault();
   
-    const Title = document.querySelector('#Title-post').value.trim();
+    const Title = document.querySelector('#title-post').value.trim();
     const description = document.querySelector('#description-post').value.trim();
   
     if (Title && description) {
@@ -20,3 +20,7 @@ const createPostFormHandler = async (event) => {
       }
     }
   };
+
+  document
+  .querySelector('.createpost-form')
+  .addEventListener('submit', createPostFormHandler);
