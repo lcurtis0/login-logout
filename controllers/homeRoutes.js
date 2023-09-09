@@ -88,8 +88,9 @@ router.get('/dashboard', withAuth, async (req, res) => {
     res.redirect('/login');
   }
 })
-module.exports = router;
 
+
+/*
 router.get('/dashboard', async (req, res) => {
   try {
     const userData = await User.findAll({
@@ -107,6 +108,8 @@ router.get('/dashboard', async (req, res) => {
     res.status(500).json(err);
   }
 })
+*/
+
 module.exports = router;
 
 
