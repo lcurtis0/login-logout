@@ -3,45 +3,45 @@ const { User, Dashboard, Post } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
-    try {
-      const dashboardData = await Dashboard.findAll({
-        include: [
-          {
-            model: Post,
-            attributes: [
-              'name',
-              'title',
-              'date',
-              'description'
-                ],
-          },
-        ],
-      })
+  try {
+    const dashboardData = await Dashboard.findAll({
+      include: [
+        {
+          model: Post,
+          attributes: [
+            'name',
+            'title',
+            'date',
+            'description'
+          ],
+        },
+      ],
+    })
 
-      const users = dashboardData.map((project) => project.get({ plain: true }));
-      res.render('homepage', {
-        users,
-        logged_in: req.session.logged_in,
-      });
-    } catch (err) {
-      console.log(err);
-      res.status(500).json(err);
-    }
-  
-   
+    const users = dashboardData.map((project) => project.get({ plain: true }));
+    res.render('homepage', {
+      users,
+      logged_in: req.session.logged_in,
+    });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+
+
 });
 
 router.get('/login', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/login');
+  if (!req.session.logged_in) {
+    res.redirect('/');
     return;
   }
   res.render('login');
 });
 
 router.get('/logout', (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect('/logout');
+  if (!req.session.logged_in) {
+    res.redirect('/');
     return;
   }
   res.render('logout');
@@ -50,7 +50,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/');
+    res.redirect('/dashboard');
     return;
   }
   res.render('signup');
@@ -59,7 +59,7 @@ router.get('/signup', (req, res) => {
 
 router.get('/dashboard', withAuth, async (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    //res.redirect('/dashboard');
     try {
 
       const dashboardData = await Dashboard.findAll({
@@ -94,16 +94,15 @@ router.get('/dashboard', withAuth, async (req, res) => {
 })
 
 
-/*
+
 router.get('/dashboard', async (req, res) => {
   try {
-    const userData = await User.findAll({
-      attributes: { exclude: ['password'] },
-      order: [['name', 'ASC']],
-    });
+    const postData = await Post.findAll();
 
-    const usersposts = userData.map((project) => project.get({ plain: true }));
+    const usersposts = postData.map((project) => project.get({ plain: true }));
 
+
+    console.log(usersposts)
     res.render('dashboard', {
       usersposts,
       logged_in: req.session.logged_in,
@@ -112,7 +111,7 @@ router.get('/dashboard', async (req, res) => {
     res.status(500).json(err);
   }
 })
-*/
+
 
 module.exports = router;
 

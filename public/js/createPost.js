@@ -7,7 +7,7 @@ const createPostFormHandler = async (event) => {
     const description = document.querySelector('#description-post').value.trim();
   
     if (Title && description) {
-      const response = await fetch('/api/users/post', {
+      const response = await fetch('/api/createpost/write', {
         method: 'POST',
         body: JSON.stringify({Title, description }),
         headers: { 'Content-Type': 'application/json' },

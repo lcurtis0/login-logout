@@ -1,15 +1,12 @@
 <section class="card">
-  <a href="/post/{{id}}">
-    <header>{{user}}</header>
+  <a href="/post/{{id}}">{{post.name}}</a>
+  <div class="card-body">
+
+    <header>{{post.title}} By: {{post.name}} on {{post.date}}</header>
 
     <div class="card-body">
-
-      <div class="post-header">
-        {{posts.user}}
-        {{posts.date}}
-      </div>
-      <div>{{posts.description}}</div>
-
+      <p>{{post.description}}</p>
     </div>
-  
+  </div>
+
 </section>
