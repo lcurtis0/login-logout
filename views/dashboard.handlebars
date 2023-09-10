@@ -1,25 +1,22 @@
 <section class="container">
-  {{#if logged_in}}
-  <h3 class="dasboard-name">{{dasboard.name}}</h3>
+  <h3 class="dasboard-name">Dashboard</h3>
   <section class="flex-row justify-center">
 
-    {{#each post.id as |post|}}
     <section class="card">
-      <a href="/post/{{id}}">
-        <header>{{title}} By: {{name}} on {{date}}</header>
 
-        <div class="card-body">
-          <p>{{description}}</p>
-        </div>
-      </a>
+      {{#each post.id as |post|}}
+      {{> post-details}}
+      {{/each}}
+
     </section>
-    {{/each}}
 
-  {{createpost-details}}
+    <section class="card">
+      {{> createpost-details}}
+    </section>
 
-    {{else}}
-    <h3> You must be signed in first</h3>
-    <p> Use the sign up link if you don't have an account</p>
-    <a href="/login">Got to login</a>
+
+    <h3> If you want to logout</h3>
+    <p> Use the logout link if you want a different account</p>
+    <a href="/logout">Got to logout</a>
   </section>
 </section>

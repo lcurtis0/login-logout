@@ -4,10 +4,12 @@
 
     <div class="card-body">
 
-      <div class="post-header">
-        {{posts.user}}
-        {{posts.date}}
-      </div>
+        <header>{{post.title}} By: {{post.name}} on {{post.date}}</header>
+
+        <div class="card-body">
+          <p>{{post.description}}</p>
+        </div>
+
       <div>{{posts.description}}</div>
 
     </div>
