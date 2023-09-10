@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { Post } = require('../../models');
 
 
-router.get('/', async (req, res) => {
+router.get('/current', async (req, res) => {
     try {
       const postData = await Post.findAll();
       res.status(200).json(postData);
@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     }
   });
 
-router.post('/', async (req, res) => {
+router.post('/write', async (req, res) => {
     try {
         const createPostData = await Post.create(req.body);
         res.status(200).json(createPostData);
