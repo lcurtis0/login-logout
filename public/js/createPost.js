@@ -18,7 +18,7 @@ const createPostFormHandler = async (event) => {
                 payload.dashboard_id =0 ;
         */
 
-        var payload = {};
+        let payload = {};
         payload.name = Title;
         payload.title = Title;
         payload.description = description;
@@ -30,16 +30,32 @@ const createPostFormHandler = async (event) => {
         const response = await fetch('/api/createpost/write', {
             method: 'POST',
             body: JSON.stringify(payload),
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json' }, // can be packaged along with any post or get request moving between clients and servers - credit to The codeing Train
+        })
+        
+        /*
+        
+        .then(response =>{
+            return response.json();
+        }).then(data => {
+            data.forEach(user =>{
+                const insertName = '<li>${payload.name}</li>';
+
+                document.querySelector('section').insertAdjacentHTML('beforeend',insertName);
+            })
         });
+
+        */
 
         if (response.ok) {
             console.log("------------This response is okay------------" + response);
             //document.location.replace('/');
 
-            const titleCreate = document.getElementById("createTitle")
-            const descriptionCreate = document.getElementById("createDescription")
-            const dateCreate = document.getElementById("createDate")
+            console.log(payload);
+
+            let titleCreate = document.getElementById("createTitle")
+            let descriptionCreate = document.getElementById("createDescription")
+            let dateCreate = document.getElementById("createDate")
 
             titleCreate = payload.title;
             descriptionCreate = payload.description;
