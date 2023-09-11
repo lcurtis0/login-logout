@@ -1,6 +1,9 @@
 const router = require('express').Router();
 const { User, Dashboard, Post } = require('../models');
+//auth file makes sure user is loggedin to have an action 
 const withAuth = require('../utils/auth');
+
+//this area is for navigating pages
 
 router.get('/', async (req, res) => {
   try {
@@ -50,7 +53,7 @@ router.get('/logout', (req, res) => {
 
 router.get('/signup', (req, res) => {
   if (req.session.logged_in) {
-    res.redirect('/dashboard');
+    res.redirect('/dashboard'); //onece signed up can see dashbaord
     return;
   }
   res.render('signup');
