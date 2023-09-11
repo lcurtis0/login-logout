@@ -15,6 +15,8 @@ router.post('/write', async (req, res) => {
     try {
         const createPostData = await Post.create(req.body);
         res.status(200).json(createPostData);
+       /* res.json({status: 'success',
+    Date: }) */
         if (!createPostData) {
             res
                 .status(400)
