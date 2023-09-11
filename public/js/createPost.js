@@ -49,19 +49,16 @@ const createPostFormHandler = async (event) => {
 
         if (response.ok) {
             console.log("------------This response is okay------------" + response);
-            //document.location.replace('/');
-
             console.log(payload);
-
+        
             let titleCreate = document.getElementById("createTitle")
             let descriptionCreate = document.getElementById("createDescription")
             let dateCreate = document.getElementById("createDate")
-
-            titleCreate = payload.title;
-            descriptionCreate = payload.description;
-            dateCreate = payload.date;
-
-        } else {
+        
+            titleCreate.textContent = payload.title;
+            descriptionCreate.textContent = payload.description;
+            dateCreate.textContent = payload.date;
+        }  else {
             alert('Could not make a post: Need to fillout title and description');
         }
     }
