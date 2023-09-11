@@ -79,7 +79,6 @@ router.get('/dashboard', withAuth, async (req, res) => {
 
       const dashboard = dashboardData.map(posts => posts.get({ plain: true }));
 
-      console.log(" HELLO THIS IS SHOWING HERE")
       res.render('dashboard', { dashboard, loggedIn: req.session.loggedIn });
       return;
     } catch (err) {
