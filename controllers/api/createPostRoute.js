@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { Post } = require('../../models');
 
-
+// for currrent posts already made 
 router.get('/current', async (req, res) => {
     try {
       const postData = await Post.findAll();
@@ -10,6 +10,8 @@ router.get('/current', async (req, res) => {
       res.status(500).json(err);
     }
   });
+
+  //creates new posts and saves to database
 
 router.post('/write', async (req, res) => {
     try {

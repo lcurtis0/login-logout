@@ -1,6 +1,8 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+
+// this segments is for testing user email and password
 router.post('/login', async (req, res) => {
   try {
     const userData = await User.findOne({ where: { email: req.body.email } });
@@ -33,7 +35,7 @@ router.post('/login', async (req, res) => {
   }
 });
 
-
+// logout destorys the session so that i must be reentered in order to see information
 router.post('/logout', (req, res) => {
   if (req.session.logged_in) {
     req.session.destroy(() => {
@@ -44,6 +46,8 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// creates session by entering information
+
 router.post('/signup', async (req, res) => {
   const signupData = await User.create({
     email: req.body.email,
@@ -53,6 +57,8 @@ router.post('/signup', async (req, res) => {
   if (!signupData) {
     return res.json({ message: 'this is is not a valid sign up' });
   }
+
+  // then saves saves user_id and sets loggedin to true
 
   req.session.save(() => {
     req.session.user_id = signupData.id;
